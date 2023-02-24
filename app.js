@@ -31,4 +31,8 @@ app.use('/api/v1', userRoute);
 app.use('/api/v1', isAuthenticated, property);
 app.use('/api/v1', isAuthenticated, intrustedUser);
 
+app.use('/', (req, res) => {
+  res.send("api is working")
+})
+
 module.exports = app;

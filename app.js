@@ -20,19 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // app.use(cookieParser());
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true,
-  methods:["GET", "POST", "PUT", "DELETE"]
-}))
+app.use(cors({ origin: true, credentials: true }));
 
 /**routers */
 app.use('/api/v1', userRoute);
 app.use('/api/v1', isAuthenticated, property);
 app.use('/api/v1', isAuthenticated, intrustedUser);
-
-app.use('/', (req, res) => {
-  res.send("api is working")
-})
 
 module.exports = app;
